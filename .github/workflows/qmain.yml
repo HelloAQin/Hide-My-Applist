@@ -1,4 +1,4 @@
-name: QMain
+name: Build
 
 on:
   push:
@@ -38,8 +38,6 @@ jobs:
       - name: Write key
         if: ${{ github.ref == 'refs/heads/master' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
         run: |
-          echo officialBuild=true >> local.properties
-          echo buildWithGitSuffix=true >> local.properties
           echo storePassword='${{ secrets.KEY_STORE_PASSWORD }}' >> local.properties
           echo keyAlias='${{ secrets.ALIAS }}' >> local.properties
           echo keyPassword='${{ secrets.ALIAS_KEY_PASSWORD }}' >> local.properties
